@@ -22,3 +22,18 @@ def moveD():
 
 def reset():
     turtle.reset()
+
+
+turtle.shape('turtle')
+turtle.onkey(moveW, 'w')
+turtle.listen()
+turtle.onkey(moveA, 'a')
+turtle.listen()
+turtle.onkey(moveS, 's')
+turtle.listen()
+turtle.onkey(moveD, 'd')
+turtle.listen()
+turtle.onkey(reset, 'Escape')
+turtle.listen()
+
+turtle.exitonclick()
