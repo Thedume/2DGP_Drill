@@ -37,3 +37,5 @@ turtle.onkey(reset, 'Escape')
 turtle.listen()
 
 turtle.exitonclick()
+
+#완료
