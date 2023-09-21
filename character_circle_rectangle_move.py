@@ -32,7 +32,7 @@ def run_rectangle():
         render_frame(x, 90)
 
     for x in range(750, 50-1, -10):
-        render_frame(x, 90)
+        render_frame(x, 550)
     
     pass
 
