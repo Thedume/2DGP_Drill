@@ -15,7 +15,6 @@ running = True
 hide_cursor()
 
 
-
 while running:
     rand_x, rand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
 
@@ -27,8 +26,14 @@ while running:
 
         TUK_ground.draw(TUK_WIDTH//2, TUK_HEIGHT//2)
         hand.draw_now(rand_x, rand_y)
-        character.clip_draw(100 * frame, 100, 100, 100, x, y)
+
+        if rand_x > x:
+            character.clip_draw(100 * frame, 100, 100, 100, x, y)
+        else:
+            character.clip_composite_draw(frame * 100, 100 * 1, 100, 100, 0, 'h', x, y, 100, 100)
+
         update_canvas()
+
         frame = (frame + 1) % 8
 
         t = i / 100
