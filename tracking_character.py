@@ -43,7 +43,9 @@ while running:
             clear_canvas()
 
             TUK_ground.draw(TUK_WIDTH//2, TUK_HEIGHT//2)
-            hand.draw_now(click_x, click_y)
+
+            for p in pointList:
+                hand.draw(p[0], p[1])
 
             if x2 > x:
                 character.clip_draw(100 * frame, 100, 100, 100, x, y)
