@@ -107,3 +107,4 @@ while running:
     update_world()  # 월드 안의 객체들의 상호작용을 계산하고 그 결과를 Update한다.
 
 close_canvas()
+#fin
