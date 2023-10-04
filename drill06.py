@@ -91,6 +91,8 @@ def update_world():
             cx, cy = hx, hy # 캐릭터의 위치를 기존 목적지 위치와 강제로 정확히 일치시킴
             del points[0]   # 목표 지점에 왔기 때문에, 더이상 필요 없는 점을 삭제
             set_new_target_arrow()
+    elif points: # 목표 지점이 없는 상황에서, 새로운 목표 지점이 생기면..
+        set_new_target_arrow()
 
 
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
