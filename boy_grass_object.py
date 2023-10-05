@@ -33,12 +33,14 @@ class Smallball:
         self.image = load_image('ball21x21.png')
         self.x, self.y = random.randint(0, 800), 599
         self.speed = random.randint(3, 10)
+        self.move = True
 
     def update(self):
-        if self.y >= 55 + 11:
+        if self.y >= 56 + 11 and self.move:
             self.y -= self.speed
         else:
-            pass
+            self.y = 67
+            self.move = False
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -49,12 +51,14 @@ class Bigball:
         self.image = load_image('ball41x41.png')
         self.x, self.y = random.randint(0, 800), 599
         self.speed = random.randint(3, 10)
+        self.move = True
 
     def update(self):
-        if self.y >= 55 + 20:
+        if self.y >= 56 + 20 and self.move:
             self.y -= self.speed
         else:
-            pass
+            self.y = 76
+            self.move = False
 
     def draw(self):
         self.image.draw(self.x, self.y)
