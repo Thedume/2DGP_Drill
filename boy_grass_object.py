@@ -13,6 +13,20 @@ class Grass:
         pass
 
 
+class Boy:
+    def __init__(self):
+        self.x, self.y = 0, 90
+        self.frame = 0
+        self.image = load_image('run_animation.png')
+
+    def update(self):
+        self.frame = (self.frame + 1) % 8
+        self.x += 5
+
+    def draw(self):
+        self.image.clip_draw(self.frame*100, 0, 100, 100, self.x, self.y)
+
+
 def handle_events():
     global running
     events = get_events()
@@ -26,18 +40,24 @@ def handle_events():
 def reset_world():
     global running
     global grass
+    global team
 
     running = True
     grass = Grass()
+    team = [Boy() for _ in range(11)]
 
 
 def update_world():
     grass.update()
+    for boy in team:
+        boy.update()
 
 
 def render_world():
     clear_canvas()
     grass.draw()
+    for boy in team:
+        boy.draw()
     update_canvas()
 
 
