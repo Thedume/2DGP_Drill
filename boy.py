@@ -113,7 +113,10 @@ class AutoRun:
     def enter(boy, e):
         print("Enter AutoRun")
         boy.frame = 0
-        boy.dir = 1
+        if boy.action == 2:
+            boy.dir = -1
+        elif boy.action == 3:
+            boy.dir = 1
         pass
 
     @staticmethod
