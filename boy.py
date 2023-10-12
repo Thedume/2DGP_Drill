@@ -135,6 +135,10 @@ class AutoRun:
     @staticmethod
     def draw(boy):
         print("Draw AutoRun")
+        if boy.dir == 1:
+            boy.action = 1
+        elif boy.dir == -1:
+            boy.action = 0
 
         boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y+30, 200, 200)
 
