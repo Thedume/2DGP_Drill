@@ -2,7 +2,11 @@
 import math
 
 from pico2d import load_image, get_time
-from sdl2 import SDL_KEYDOWN, SDLK_SPACE, SDLK_RIGHT, SDL_KEYUP, SDLK_LEFT
+from sdl2 import SDL_KEYDOWN, SDLK_SPACE, SDLK_RIGHT, SDL_KEYUP, SDLK_LEFT, SDLK_a
+
+
+def a_down(e):
+    return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key == SDLK_a
 
 
 def space_down(e):
@@ -104,10 +108,32 @@ class Run:
         boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y)
 
 
+class AutoRun:
+    @staticmethod
+    def enter(boy, e):
+        print("Enter AutoRun")
+        pass
+
+    @staticmethod
+    def exit(boy, e):
+        print("Exit AutoRun")
+        pass
+
+    @staticmethod
+    def do(boy):
+        print("Do AutoRun")
+        pass
+
+    @staticmethod
+    def draw(boy):
+        print("Draw AutoRun")
+        pass
+
+
 class StateMachine:
     def __init__(self,boy):
         self.boy = boy
-        self.cur_state = Idle
+        self.cur_state = AutoRun
         self.transitions = {
             Idle: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, time_out: Sleep},
             Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
