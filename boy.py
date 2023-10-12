@@ -197,3 +197,4 @@ class Boy:
 
     def draw(self):
         self.state_machine.draw()
+# fin 2022150039 조진영
