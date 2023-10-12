@@ -112,32 +112,42 @@ class AutoRun:
     @staticmethod
     def enter(boy, e):
         print("Enter AutoRun")
+        boy.frame = 0
+        boy.dir = 1
         pass
 
     @staticmethod
     def exit(boy, e):
         print("Exit AutoRun")
+        boy.dir = 0
         pass
 
     @staticmethod
     def do(boy):
         print("Do AutoRun")
+        boy.frame = (boy.frame + 1) % 8
+
+        boy.x += boy.dir * 5
+        if boy.x >= 750 or boy.x <= 50:
+            boy.dir *= -1
         pass
 
     @staticmethod
     def draw(boy):
         print("Draw AutoRun")
-        pass
+
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y+30, 200, 200)
 
 
 class StateMachine:
     def __init__(self,boy):
         self.boy = boy
-        self.cur_state = AutoRun
+        self.cur_state = Idle
         self.transitions = {
-            Idle: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, time_out: Sleep},
-            Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
-            Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle}
+            Idle: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, time_out: Sleep, a_down: AutoRun},
+            Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle, a_down: AutoRun},
+            Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle, a_down: AutoRun},
+            AutoRun: {right_down: Run, left_down: Run, right_up: Run, left_up: Run}
         }
 
     def start(self):
