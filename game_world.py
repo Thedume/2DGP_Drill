@@ -1,6 +1,6 @@
 
 # 2개의 layer를 갖는 게임월드로 구현
-objects = [[], []]
+objects = [[], [], []]
 
 
 def add_object(o, depth):
