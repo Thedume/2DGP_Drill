@@ -22,7 +22,7 @@ def handle_events():
 
 def create_world():
     global running
-    global grass
+    global grass1, grass2
     global team
     global boy
 
@@ -31,8 +31,11 @@ def create_world():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    grass1 = Grass(30)
+    game_world.add_object(grass1, 2)
+
+    grass2 = Grass(60)
+    game_world.add_object(grass2, 0)
 
 
 
